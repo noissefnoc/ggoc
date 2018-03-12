@@ -12,3 +12,12 @@
 
 # Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736
 .glide/
+
+# IntelliJ Idea project file
+.idea/*
+
+# local dependency file
+vendor/*
+
+# binary file
+bin/*
