@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	Version string
+	Version  string
 	Revision string
 )
 
@@ -51,7 +51,6 @@ func getToken(config *oauth2.Config) (*oauth2.Token, error) {
 	return token, nil
 }
 
-
 func saveToken(file string, token *oauth2.Token) error {
 	fmt.Printf("Saving credential file to: %s\n", file)
 
@@ -74,7 +73,7 @@ func saveToken(file string, token *oauth2.Token) error {
 	return nil
 }
 
-func run(secret string, credential string, scope string) (int, error){
+func run(secret string, credential string, scope string) (int, error) {
 	b, err := ioutil.ReadFile(secret)
 
 	if err != nil {
