@@ -39,14 +39,14 @@ func getToken(config *oauth2.Config) (*oauth2.Token, error) {
 	var code string
 
 	if _, err := fmt.Scan(&code); err != nil {
-		fmt.Errorf("Unable to read authorization code %v", err)
+		fmt.Printf("Unable to read authorization code %v", err)
 		return nil, err
 	}
 
 	token, err := config.Exchange(oauth2.NoContext, code)
 
 	if err != nil {
-		fmt.Errorf("Unable to retrieve token from web %v", err)
+		fmt.Printf("Unable to retrieve token from web %v", err)
 		return nil, err
 	}
 
@@ -59,7 +59,7 @@ func saveToken(file string, token *oauth2.Token) error {
 	f, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0600)
 
 	if err != nil {
-		fmt.Errorf("Unable to cache oauth token: %v", err)
+		fmt.Printf("Unable to cache oauth token: %v", err)
 		return err
 	}
 
@@ -68,7 +68,7 @@ func saveToken(file string, token *oauth2.Token) error {
 	err = json.NewEncoder(f).Encode(token)
 
 	if err != nil {
-		fmt.Errorf("Unable to write oauth token: %v", err)
+		fmt.Printf("Unable to write oauth token: %v", err)
 		return err
 	}
 
@@ -79,26 +79,26 @@ func run(secret string, credential string, scope string) (int, error) {
 	b, err := ioutil.ReadFile(secret)
 
 	if err != nil {
-		fmt.Errorf("Unable to read client secret file: %v", err)
+		fmt.Printf("Unable to read client secret file: %v", err)
 		return 1, err
 	}
 
 	config, err := google.ConfigFromJSON(b, scope)
 
 	if err != nil {
-		fmt.Errorf("Unable to parse client secret file to config: %v", err)
+		fmt.Printf("Unable to parse client secret file to config: %v", err)
 		return 1, err
 	}
 
 	token, err := getToken(config)
 
 	if err != nil {
-		fmt.Errorf("Unable to get token: %v", err)
+		fmt.Printf("Unable to get token: %v", err)
 		return 1, err
 	}
 
 	if err = saveToken(credential, token); err != nil {
-		fmt.Errorf("Unable to get token: %v", err)
+		fmt.Printf("Unable to get token: %v", err)
 		return 1, err
 	}
 
@@ -120,7 +120,7 @@ func main() {
 	}
 
 	if len(*sec) == 0 || len(*cre) == 0 || len(*sco) == 0 {
-		fmt.Println("[ERROR] You must specify -secret, -credential and scope options.\n")
+		fmt.Print("[ERROR] You must specify -secret, -credential and scope options.\n\n")
 		flag.Usage()
 		printVersion()
 		os.Exit(1)
@@ -129,7 +129,7 @@ func main() {
 	ret, err := run(*sec, *cre, *sco)
 
 	if err != nil {
-		fmt.Errorf("Failed to run: %v", err)
+		fmt.Printf("Failed to run: %v", err)
 	}
 
 	os.Exit(ret)
