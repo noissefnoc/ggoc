@@ -21,3 +21,4 @@ vendor/*
 
 # binary file
 bin/*
+dist/*
