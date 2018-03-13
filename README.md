@@ -3,6 +3,7 @@ ggoc
 
 [![GitHub release](http://img.shields.io/github/release/noissefnoc/ggoc.svg?style=flat-square)][release]
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)][license]
+[![Go Report Card](https://goreportcard.com/badge/github.com/noissefnoc/ggoc)](https://goreportcard.com/report/github.com/noissefnoc/ggoc)
 
 [release]: https://github.com/noissefnoc/ggoc/releases
 [license]: https://github.com/noissefnoc/ggoc/blob/master/LICENSE.txt
