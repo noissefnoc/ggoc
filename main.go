@@ -12,7 +12,9 @@ import (
 )
 
 var (
+	// Version when binary build
 	Version  string
+	// Revision when binary build
 	Revision string
 )
 
