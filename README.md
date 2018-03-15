@@ -14,9 +14,14 @@ Generate Google OAuth2 Credential file for batch program.
 Usage
 -------
 
+### Turn on API
+
+First, create API project from [Google API Console](https://console.developers.google.com/) if haven't create it. And then turn on API that you want to use.
+
+
 ### Get client secret from Google Cloud Platform
 
-First you create OAuth client and get client secret from [Google Cloud Console](https://console.cloud.google.com/).
+Create OAuth client and get client secret from [Google Cloud Console](https://console.cloud.google.com/).
 
 1. Go to Google Cloud Console
 1. Click **API Manager**
